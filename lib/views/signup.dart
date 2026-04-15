@@ -37,7 +37,7 @@ class _SignupScreenState extends State<SignupScreen> {
     } else if (response.body == "exists") {
       Get.snackbar("Error", "User already exists");
     } else {
-      Get.snackbar("Error", "Fill all spaces");
+      Get.snackbar("Error", "Something went wrong");
     }
   }
 

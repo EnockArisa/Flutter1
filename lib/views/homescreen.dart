@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import '../configs/colors.dart';
 import 'dashboard.dart';
 import 'orders.dart';
 import 'profile.dart';
@@ -13,30 +14,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
+  int index = 0;
 
-  final screens = [Dashboard(), Charger(), Order(), Profile()];
+  final screens = [
+    const Dashboard(),
+    const Charger(),
+    const Order(),
+    Profile(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      extendBody: true,
+      body: screens[index],
 
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.transparent,
+        color: darkColor,
+        buttonBackgroundColor: primaryColor,
+        height: 60,
 
         items: const [
-          Icon(Icons.dashboard, size: 30),
-          Icon(Icons.category, size: 30),
-          Icon(Icons.line_style, size: 30),
-          Icon(Icons.person, size: 30),
+          Icon(Icons.dashboard, color: lightColor),
+          Icon(Icons.sports_soccer, color: lightColor),
+          Icon(Icons.shopping_cart, color: lightColor),
+          Icon(Icons.person, color: lightColor),
         ],
 
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
+        onTap: (i) => setState(() => index = i),
       ),
     );
   }
